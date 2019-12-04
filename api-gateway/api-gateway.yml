@@ -3,5 +3,6 @@ zuul.ignored-services: "*"
 zuul.routes.score-service.path: /score-svc/**
 zuul.routes.account-service.path: /account-svc/**
 zuul.routes.account-service.url: http://localhost:8082
+zuul.sensitiveHeaders: Cookie, Set-Cookie
 
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2500
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
