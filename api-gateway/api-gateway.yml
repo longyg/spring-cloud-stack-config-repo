@@ -1,8 +1,12 @@
-zuul.prefix: /api
-zuul.ignored-services: "*"
-zuul.routes.score-service.path: /score-svc/**
-zuul.routes.account-service.path: /account-svc/**
-zuul.routes.account-service.url: http://localhost:8082
-zuul.sensitiveHeaders: Cookie, Set-Cookie
+zuul:
+    #prefix: /api
+    ignored-services: "*"
+    routes:
+        auth-server:
+            path: /auth/**
+    sensitiveHeaders: Cookie, Set-Cookie
 
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+hystrix:
+    command:
+        default:
+            execution.isolation.thread.timeoutInMilliseconds: 5000
