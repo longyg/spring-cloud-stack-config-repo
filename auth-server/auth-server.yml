@@ -1,2 +1,27 @@
-signing:
-    key: "123456"
+server:
+  port: 8901
+
+# 配置oauth2 client
+security:
+  oauth2:
+    client:
+      demo-client:
+        clientId: demo-client
+        clientSecret: $2a$10$Bgu/e5jk2nXEPurvvPUcqugWv7pspiya.s9TAvTtbY6wtwjKl5qXq
+        scope: all
+        registeredRedirectUri: http://www.baidu.com
+        authorizedGrantTypes: authorization_code, refresh_token, password
+
+# 用于签名JWT的key（对称密钥）
+jwt:
+    signing:
+        key: "123456"
+        
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUri:
+      defaultZone: http://localhost:8761/eureka
