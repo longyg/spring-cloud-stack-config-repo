@@ -1,5 +1,5 @@
 server:
-  port: 8080
+    port: 8080
   
 zuul:
     ignored-services: "*"
@@ -14,7 +14,6 @@ hystrix:
     command:
         default:
             execution.isolation.thread.timeoutInMilliseconds: 5000
-   
 
 security:
   oauth2: # 配置用于验证JWT的key（对称密钥）
@@ -26,10 +25,17 @@ security:
         uris: /authservice/**,/actuator/**
         
 eureka:
-  instance:
-    preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUri:
       defaultZone: http://localhost:8761/eureka
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

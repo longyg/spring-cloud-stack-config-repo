@@ -11,17 +11,27 @@ security:
         scope: all
         registeredRedirectUri: http://www.baidu.com
         authorizedGrantTypes: authorization_code, refresh_token, password
-
+  auth: # 配置跳过认证的URL
+    ignored:
+        uris: /actuator/**
+        
 # 用于签名JWT的key（对称密钥）
 jwt:
-    signing:
-        key: "123456"
+  signing:
+    key: "123456"
         
 eureka:
-  instance:
-    preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUri:
       defaultZone: http://localhost:8761/eureka
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
